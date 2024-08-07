@@ -1,0 +1,13 @@
+name: Act MWE
+
+on:
+  pull_request: {}
+  push: {}
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set -x
+          env | grep "^GITHUB_"
