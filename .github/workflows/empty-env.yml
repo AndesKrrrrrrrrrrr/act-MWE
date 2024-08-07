@@ -1,4 +1,4 @@
-name: Act MWE
+name: Empty env MWE
 
 on:
   pull_request: {}
@@ -11,3 +11,9 @@ jobs:
       - run: |
           set -x
           env | grep "^GITHUB_"
+      - run: |
+          set -euxo pipefail
+          [[ -n "$GITHUB_HEAD_REF" ]] &&
+          [[ -n "$GITHUB_BASE_REF" ]] &&
+          [[ -n "$GITHUB_SHA" ]] &&
+          true
